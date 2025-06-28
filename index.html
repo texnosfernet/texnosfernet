@@ -1,1886 +1,587 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="az">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texnosfer.net</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/3YfdvzKh/Picsart-25-04-06-12-42-56-975.png">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/3YfdvzKh/Picsart-25-04-06-12-42-56-975.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Texnosfer - Texnoloji dünyasının mərkəzi" />
+    <title>Texnosfer.net - Ana Səhifə</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #1a1a1a;
-            z-index: 1000;
-            padding: 0.8rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-center {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #cccccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ff4444;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #ff4444;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-shrink: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-        }
-
-        .social-links a {
-            color: #cccccc;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            padding: 0.5rem;
-            border-radius: 8px;
-            min-height: 44px;
-            min-width: 44px;
-            justify-content: center;
-        }
-
-        .social-links a:hover {
-            color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-        }
-
-        .social-links svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .texno-id-btn {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .texno-id-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .texno-id-btn:hover::before {
-            left: 100%;
-        }
-
-        .texno-id-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
-        }
-
-        .user-menu {
-            display: none;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff4444, #cc3333);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
-        }
-
-        .logout-btn {
-            background: transparent;
-            border: 1px solid #ff4444;
-            color: #ff4444;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            min-height: 36px;
-        }
-
-        .logout-btn:hover {
-            background: #ff4444;
-            color: white;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.7rem;
-            border-radius: 4px;
-            transition: background 0.3s ease;
-            min-height: 44px;
-            min-width: 44px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .mobile-menu:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu span {
-            width: 22px;
-            height: 2px;
-            background: #ffffff;
-            margin: 2px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .mobile-menu.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-4px, 4px);
-        }
-
-        .mobile-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-4px, -4px);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #1a1a1a;
-            padding: 1.5rem;
-            z-index: 999;
-        }
-
-        .mobile-nav.active {
-            display: block;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-nav a {
-            color: #cccccc;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: block;
-            font-size: 1.1rem;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-        }
-
-        .mobile-nav a:hover,
-        .mobile-nav a.active {
-            color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-        }
-
-        .mobile-social {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #2a2a2a;
-            margin-bottom: 1rem;
-        }
-
-        .mobile-social a {
-            min-height: 48px;
-            min-width: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mobile-texno-btn {
-            width: 100%;
-            max-width: 280px;
-            margin: 0 auto;
-            display: block;
-            text-align: center;
-            min-height: 48px;
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .mobile-texno-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
-        }
-
-        .mobile-user-section {
-            display: none;
-            padding-top: 1rem;
-            border-top: 1px solid #2a2a2a;
-            text-align: center;
-        }
-
-        .mobile-user-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .mobile-user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff4444, #cc3333);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .mobile-logout-btn {
-            background: transparent;
-            border: 1px solid #ff4444;
-            color: #ff4444;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            min-height: 44px;
-            width: 100%;
-            max-width: 200px;
-        }
-
-        .mobile-logout-btn:hover {
-            background: #ff4444;
-            color: white;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            animation: fadeIn 0.3s ease-out;
-            padding: 1rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { 
-                opacity: 0;
-                transform: translateY(-30px) scale(0.95);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-content {
-            background: linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%);
-            margin: 1rem auto;
-            padding: 0;
-            border: 1px solid #333;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 420px;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-            animation: slideIn 0.4s ease-out;
-            max-height: calc(100vh - 2rem);
-            overflow-y: auto;
-            
-            scrollbar-width: none; 
-            -ms-overflow-style: none; 
-        }
-
-        .modal-content::-webkit-scrollbar {
-            display: none;
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .modal-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .close {
-            color: rgba(255, 255, 255, 0.8);
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .close:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .texno-id-logo {
-            position: relative;
-            z-index: 1;
-        }
-
-        .texno-id-logo h2 {
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin: 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            letter-spacing: -1px;
-        }
-
-        .texno-id-logo p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        .modal-body {
-            padding: 2rem 1.5rem;
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 2rem;
-            background: #0a0a0a;
-            border-radius: 12px;
-            padding: 0.3rem;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .auth-tab {
-            flex: 1;
-            padding: 1rem;
-            text-align: center;
-            background: transparent;
-            border: none;
-            color: #cccccc;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.9rem;
-            min-height: 48px;
-        }
-
-        .auth-tab.active {
-            background: linear-gradient(135deg, #ff4444, #cc3333);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 1rem;
-            background: #0a0a0a;
-            border: 2px solid #2a2a2a;
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-            min-height: 48px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #ff4444;
-            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .form-group input::placeholder {
-            color: #666;
-        }
-
-        .login-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: white;
-            padding: 1.2rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            min-height: 52px;
-        }
-
-        .login-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        .login-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .login-btn:hover:not(:disabled)::before {
-            left: 100%;
-        }
-
-        .login-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
-        }
-
-        .login-btn:active:not(:disabled) {
-            transform: translateY(0);
-        }
-
-        .modal-footer {
-            text-align: center;
-            color: #cccccc;
-            font-size: 0.9rem;
-            padding-top: 1rem;
-            border-top: 1px solid #2a2a2a;
-        }
-
-        .modal-footer a {
-            color: #ff4444;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
-            display: inline-block;
-        }
-
-        .modal-footer a:hover {
-            color: #ff6666;
-            text-decoration: underline;
-        }
-
-        .success-message, .error-message {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: 600;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        .success-message {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-        }
-
-        .error-message {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-        }
-
-        main {
-            margin-top: 70px;
-            min-height: calc(100vh - 70px);
-        }
-
-        .hero {
-            padding: 3rem 1rem;
-            text-align: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 68, 68, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #ff4444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #cccccc;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
-            color: white;
-            padding: 1.2rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            white-space: nowrap;
-            min-height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid #ff4444;
-            box-shadow: none;
-        }
-
-        .cta-button.secondary:hover {
-            background: #ff4444;
-            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-        }
-
-        .about {
-            padding: 4rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            text-align: center;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-            color: #ffffff;
-        }
-
-        .about > div > p {
-            text-align: center;
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .about-card {
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff4444, #cc3333);
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff4444;
-            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.2);
-        }
-
-        .about-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ff4444;
-        }
-
-        .about-card p {
-            color: #cccccc;
-            line-height: 1.7;
-        }
-
-        .features {
-            padding: 4rem 1rem;
-            background: #111111;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 3rem;
-            color: #ffffff;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-item {
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            border-color: #ff4444;
-            transform: translateY(-3px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ff4444;
-        }
-
-        .feature-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .feature-item p {
-            color: #cccccc;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        footer {
-            background: #0a0a0a;
-            padding: 3rem 1rem 1rem;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 0.8rem;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a:hover {
-            color: #ff4444;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: #1a1a1a;
-            color: #cccccc;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .footer-social a:hover {
-            background: #ff4444;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .footer-social svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .copyright {
-            color: #666666;
-            font-size: 0.9rem;
-            padding-top: 2rem;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        @media (max-width: 1024px) {
-            nav {
-                padding: 0 1.5rem;
-            }
-            
-            .hero {
-                padding: 2rem 1rem;
-                min-height: 70vh;
-            }
-            
-            .about, .features {
-                padding: 3rem 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-center {
-                display: none;
-            }
-
-            .nav-right .social-links {
-                display: none;
-            }
-
-            .nav-right .texno-id-btn {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-                min-height: 60vh;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .modal-content {
-                margin: 0.5rem;
-                max-height: calc(100vh - 1rem);
-            }
-
-            .modal-header {
-                padding: 1.5rem 1rem;
-            }
-
-            .modal-body {
-                padding: 1.5rem 1rem;
-            }
-
-            .texno-id-logo h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 0 1rem;
-            }
-
-            .logo img {
-                height: 35px;
-            }
-
-            .user-avatar {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-
-            .logout-btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-            }
-
-            .hero {
-                padding: 1.5rem 1rem;
-            }
-
-            .about, .features {
-                padding: 2rem 1rem;
-            }
-
-            .about-card, .feature-item {
-                padding: 1.5rem;
-            }
-
-            .modal-header {
-                padding: 1.2rem 1rem;
-            }
-
-            .modal-body {
-                padding: 1.2rem 1rem;
-            }
-
-            .form-group input {
-                padding: 0.9rem;
-            }
-
-            .login-btn {
-                padding: 1rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff4444;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #cc3333;
-        }
-
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            margin: -10px 0 0 -10px;
-            border: 2px solid #ff4444;
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (hover: none) and (pointer: coarse) {
-            .nav-links a,
-            .social-links a,
-            .footer-links a,
-            .footer-social a,
-            .mobile-nav a {
-                min-height: 48px;
-                min-width: 48px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .texno-id-btn,
-            .cta-button,
-            .login-btn {
-                min-height: 48px;
-            }
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      
+      * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      
+      body {
+        background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+        background-attachment: fixed;
+      }
+      
+      .bg-darker {
+        background-color: #0a0a0a;
+      }
+      
+      .bg-dark-card {
+        background: rgba(17, 17, 17, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .border-dark {
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      
+      .glass-effect {
+        background: rgba(17, 17, 17, 0.4);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .hero-gradient {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 25%, #0a0a0a 50%, #1a1111 75%, #0a0a0a 100%);
+      }
+      
+      .text-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #f87171 50%, #ffffff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px -12px rgba(239, 68, 68, 0.2);
+      }
+      
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      .pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+      }
+      
+      @keyframes pulse-glow {
+        from { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+        to { box-shadow: 0 0 40px rgba(239, 68, 68, 0.6); }
+      }
+      
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+      }
+      
+      .social-instagram:hover {
+        color: #ef4444 !important;
+        transform: scale(1.1);
+      }
+      
+      .social-tiktok:hover {
+        color: #ef4444 !important;
+        transform: scale(1.1);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #b91c1c, #991b1b);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+      }
+      
+      .btn-secondary {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+      }
     </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="https://i.ibb.co/kst42Fhz/Picsart-25-04-06-11-21-23-535.png" alt="Texnosfer Loqosu">
-            </div>
-            <div class="nav-center">
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Ana Səhifə</a></li>
-                    <li><a href="#about">Haqqımızda</a></li>
-                    <li><a href="https://forum.texnosfer.net">Forum</a></li>
-                </ul>
-            </div>
-            <div class="nav-right">
-                <div class="social-links">
-                    <a href="https://instagram.com/texnosfernet" target="_blank" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="https://tiktok.com/@texnosfernet" target="_blank" aria-label="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </a>
-                </div>
-                <button class="texno-id-btn" id="texnoIdBtn" onclick="openModal()">Texno ID</button>
-                <div class="user-menu" id="userMenu">
-                    <div class="user-avatar" id="userAvatar"></div>
-                    <button class="logout-btn" onclick="logout()">Çıxış</button>
-                </div>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-        <div class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="#home" class="active">Ana Səhifə</a></li>
-                <li><a href="#about">Haqqımızda</a></li>
-                <li><a href="#forum">Forum</a></li>
-            </ul>
-            <div class="mobile-social">
-                <a href="https://instagram.com/texnosfer" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="https://tiktok.com/@texnosfer" target="_blank" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                    </svg>
-                </a>
-            </div>
-            <button class="mobile-texno-btn" id="mobileTexnoBtn" onclick="openModal()" style="display: block;">Texno ID</button>
-            <div class="mobile-user-section" id="mobileUserSection">
-                <div class="mobile-user-info">
-                    <div class="mobile-user-avatar" id="mobileUserAvatar"></div>
-                    <span id="mobileUsername"></span>
-                </div>
-                <button class="mobile-logout-btn" onclick="logout()">Çıxış</button>
-            </div>
-        </div>
-    </header>
+  </head>
+  <body class="bg-darker scroll-smooth">
+    <div id="root">
 
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div class="texno-id-logo">
-                    <h2>Texno ID</h2>
-                </div>
+      <header class="bg-darker/95 backdrop-blur-md border-b border-dark sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center py-4">
+
+            <div class="flex items-center">
+              <a href="#home" class="block">
+                <img 
+                  src="https://i.ibb.co/Txpbp5xP/Picsart-25-04-06-12-14-50-827.png" 
+                  alt="Texnosfer Logo" 
+                  class="h-12 w-auto transition-opacity duration-300 hover:opacity-90"
+                />
+              </a>
             </div>
-            <div class="modal-body">
-                <div id="messageContainer"></div>
-                <div class="auth-tabs">
-                    <button class="auth-tab active" onclick="switchTab('login')">Daxil Ol</button>
-                    <button class="auth-tab" onclick="switchTab('signup')">Qeydiyyat</button>
-                </div>
-                <form id="authForm">
-                    <div id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail">E-poçt və ya İstifadəçi adı</label>
-                            <input type="text" id="loginEmail" name="loginEmail" placeholder="E-poçt və ya istifadəçi adınızı daxil edin" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Şifrə</label>
-                            <input type="password" id="loginPassword" name="loginPassword" placeholder="Şifrənizi daxil edin" required>
-                        </div>
-                        <button type="submit" class="login-btn" id="loginBtn">Daxil Ol</button>
-                    </div>
-                    <div id="signupForm" style="display: none;">
-                        <div class="form-group">
-                            <label for="signupUsername">İstifadəçi adı</label>
-                            <input type="text" id="signupUsername" name="signupUsername" placeholder="İstifadəçi adı seçin" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">E-poçt</label>
-                            <input type="email" id="signupEmail" name="signupEmail" placeholder="E-poçt ünvanınızı daxil edin" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPassword">Şifrə</label>
-                            <input type="password" id="signupPassword" name="signupPassword" placeholder="Şifrə yaradın" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Şifrəni təsdiq edin</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Şifrənizi təsdiq edin" required>
-                        </div>
-                        <button type="submit" class="login-btn" id="signupBtn">Hesab Yarat</button>
-                    </div>
-                </form>
-                <div class="modal-footer">
-                    <p id="authFooter">Hesabınız yoxdur? <a href="#" onclick="switchTab('signup')">Yaradın</a></p>
-                </div>
+
+
+            <nav class="hidden md:flex items-center space-x-8">
+              <a href="#home" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                Ana Səhifə
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#about" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                Haqqımızda
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                Forum
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              
+
+              <div class="flex items-center space-x-4 ml-8 pl-8 border-l border-gray-700">
+                <a 
+                  href="https://instagram.com/texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-gray-400 transition-all duration-300 social-instagram"
+                  aria-label="Instagram"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a 
+                  href="https://tiktok.com/@texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-gray-400 transition-all duration-300 social-tiktok"
+                  aria-label="TikTok"
+                >
+                  <svg width="20" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </a>
+              </div>
+            </nav>
+
+
+            <div class="md:hidden">
+              <button
+                onclick="toggleMobileMenu()"
+                class="text-gray-400 hover:text-white transition-colors duration-200 p-2"
+                aria-label="Menu"
+                id="mobile-menu-button"
+              >
+                <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" x2="20" y1="6" y2="6"/>
+                  <line x1="4" x2="20" y1="12" y2="12"/>
+                  <line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+                <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 6-12 12"/>
+                  <path d="m6 6 12 12"/>
+                </svg>
+              </button>
             </div>
+          </div>
+
+
+          <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 border-t border-dark">
+              <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200">
+                Ana Səhifə
+              </a>
+              <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200">
+                Haqqımızda
+              </a>
+              <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200">
+                Forum
+              </a>
+              <div class="flex items-center space-x-4 px-3 py-2">
+                <a 
+                  href="https://instagram.com/texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-gray-400 transition-all duration-300 social-instagram"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a 
+                  href="https://tiktok.com/@texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-gray-400 transition-all duration-300 social-tiktok"
+                >
+                  <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </header>
+
+      <main>
+
+        <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+
+          <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-red-500/5 rounded-full blur-3xl floating-animation"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-red-500/5 rounded-full blur-3xl floating-animation" style="animation-delay: -3s;"></div>
+          </div>
+          
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="text-center">
+
+              <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
+                Texnosfer.net
+                <span class="text-gradient block md:inline md:ml-6">⚡</span>
+              </h1>
+              
+
+              <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+                Texnosfer.net — innovasiya və rəqəmsal dünyaya açılan qapın.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+                <a href="#about" class="btn-primary text-white px-10 py-5 rounded-2xl font-semibold text-lg flex items-center group pulse-glow">
+                  Kəşf etməyə başla
+                  <svg class="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </a>
+                <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-10 py-5 rounded-2xl font-semibold text-lg">
+                  Forum-a qoşul
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="glass-effect rounded-2xl p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-white mb-4">İnnovasiya</h3>
+                  <p class="text-gray-300 leading-relaxed">Ən son texnoloji yeniliklər və breakthrough həlləri ilə tanış olun.</p>
+                </div>
+
+                <div class="glass-effect rounded-2xl p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="m22 21-3-3m0 0a5.5 5.5 0 1 0-7.78-7.78 5.5 5.5 0 0 0 7.78 7.78Z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-white mb-4">İcma</h3>
+                  <p class="text-gray-300 leading-relaxed">Texnoloji həvəskarları və mütəxəssisləri ilə əlaqə qurun.</p>
+                </div>
+
+                <div class="glass-effect rounded-2xl p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-white mb-4">Müzakirə</h3>
+                  <p class="text-gray-300 leading-relaxed">Aktiv forumda fikirlər paylaşın və suallarınıza cavab tapın.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="about" class="bg-darker py-24 relative">
+
+          <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-red-500/3 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-red-500/3 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center mb-20">
+              <h2 class="text-4xl md:text-6xl font-black text-white mb-8">
+                Haqqımızda
+              </h2>
+              <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+                Texnosfer, texnoloji sahədə Azərbaycanda aparıcı informasiya platformasıdır. 
+                Bizim missiyamız texnoloji bilikləri əlçatan etmək və innovasiyanı dəstəkləməkdir.
+              </p>
+            </div>
+
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+              <div class="glass-effect rounded-3xl p-10 hover-lift">
+                <div class="flex items-center mb-8">
+                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mr-6">
+                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10"/>
+                      <circle cx="12" cy="12" r="6"/>
+                      <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-3xl font-bold text-white">Missiyamız</h3>
+                </div>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Texnoloji bilikləri və innovasiyaları Azərbaycan ictimaiyyətinə çatdırmaq, 
+                  rəqəmsal savadlılığı artırmaq və gənc texnoloji həvəskarları dəstəkləmək.
+                </p>
+              </div>
+
+              <div class="glass-effect rounded-3xl p-10 hover-lift">
+                <div class="flex items-center mb-8">
+                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mr-6">
+                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-3xl font-bold text-white">Vizyonumuz</h3>
+                </div>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  Azərbaycanda texnoloji sahənin inkişafına töhfə vermək, dəstək olmaq.
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-20">
+              <h3 class="text-4xl font-bold text-white text-center mb-16">Nə təklif edirik?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group">
+                  <div class="glass-effect rounded-3xl p-8 hover-lift">
+                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                      </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Texnoloji Xəbərlər</h4>
+                    <p class="text-gray-400 leading-relaxed">Ən son texnoloji yeniliklər və trendlər haqqında məlumatlar</p>
+                  </div>
+                </div>
+
+                <div class="text-center group">
+                  <div class="glass-effect rounded-3xl p-8 hover-lift">
+                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                        <path d="M3 6h18"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                      </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Təlim Materialları</h4>
+                    <p class="text-gray-400 leading-relaxed">Keyfiyyətli təlim məzmunu və praktiki dərslər</p>
+                  </div>
+                </div>
+
+                <div class="text-center group">
+                  <div class="glass-effect rounded-3xl p-8 hover-lift">
+                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                      </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">İcma Dəstəyi</h4>
+                    <p class="text-gray-400 leading-relaxed">Aktiv icma və münasib şəraitdə bilik paylaşımı</p>
+                  </div>
+                </div>
+
+                <div class="text-center group">
+                  <div class="glass-effect rounded-3xl p-8 hover-lift">
+                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Karyera Dəstəyi</h4>
+                    <p class="text-gray-400 leading-relaxed">Texnoloji sahədə karyera qurmaq üçün məsləhətlər</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center">
+              <div class="glass-effect rounded-3xl p-12 max-w-4xl mx-auto">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Bizə qoşulun!</h3>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                  Texnoloji gələcəyi birlikdə qurmaq üçün icmamızın bir hissəsi olun.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                    Forum-a qoşul
+                  </a>
+                  <a href="https://instagram.com/texnosfernet" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                    Instagram-da izlə
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-darker border-t border-dark relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            <div class="col-span-1 md:col-span-2">
+              <a href="#home" class="block">
+                <img 
+                  src="https://i.ibb.co/Txpbp5xP/Picsart-25-04-06-12-14-50-827.png" 
+                  alt="Texnosfer Logo" 
+                  class="h-14 w-auto mb-6 transition-opacity duration-300 hover:opacity-90"
+                />
+              </a>
+              <p class="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+                Texnoloji dünyasının mərkəzi. İnnovasiya, bilik və icma bir yerdə.
+              </p>
+              <div class="flex space-x-4">
+                <a 
+                  href="https://instagram.com/texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="glass-effect text-gray-400 p-4 rounded-2xl transition-all duration-300 social-instagram"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a 
+                  href="https://tiktok.com/@texnosfernet" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="glass-effect text-gray-400 p-4 rounded-2xl transition-all duration-300 social-tiktok"
+                >
+                  <svg width="22" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-white font-bold text-xl mb-6">Sürətli Keçidlər</h3>
+              <ul class="space-y-4">
+                <li>
+                  <a href="#home" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                    Ana Səhifə
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                    Haqqımızda
+                  </a>
+                </li>
+                <li>
+                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                    Forum
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:info@texnosfer.net" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                    Əlaqə
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+          <div class="border-t border-dark mt-16 pt-8 text-center">
+            <p class="text-gray-400 text-lg">
+              © 2025 Texnosfer.net. Bütün hüquqlar qorunur.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content fade-in-up">
-                <h1>Texnosfer.net-ə Xoş Gəlmisiniz</h1>
-                <p>Texnologiya və innovasiyanın gələcəyini kəşf edin. Sabahın rəqəmsal mənzərəsini formalaşdıran texnologiya həvəskarları, proqramçılar və vizyonerlər icmasına qoşulun.</p>
-                <div class="cta-buttons">
-                    <button class="cta-button" onclick="openModal()">Başlayın</button>
-                    <a href="#about" class="cta-button secondary">Ətraflı Öyrənin</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="about" id="about">
-            <div class="fade-in-up">
-                <h2>Texnosfer Haqqında</h2>
-                <p>
-                    Texnosfer sadəcə bir platforma deyil - texnologiyanın yaradıcılıqla buluşduğu inkişaf edən bir ekosistemdır. 
-                    Biz innovasiyanı təşviq etməyə, bilik paylaşmağa və daim inkişaf edən texnologiya dünyasında əlaqələr qurmağa həsr olunmuşuq.
-                </p>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card fade-in-up">
-                    <h3>Missiyamız</h3>
-                    <p>Texnologiya təhsilini demokratikləşdirmək və hər kəsin birlikdə öyrənə, paylaşa və böyüyə biləcəyi bir məkan yaratmaq. Gələcəyin davamlı öyrənmə və innovasiyanı qəbul edənlərə məxsus olduğuna inanırıq.</p>
-                </div>
-                <div class="about-card fade-in-up">
-                    <h3>Vizyonumuz</h3>
-                    <p>Dünya miqyasında texnologiya həvəskarları üçün aparıcı platforma olmaq, texnoloji tərəqqini irəli aparan və real dünya problemləri üçün mənalı həllər yaradan bir icma təşkil etmək.</p>
-                </div>
-                <div class="about-card fade-in-up">
-                    <h3>Dəyərlərimiz</h3>
-                    <p>İnovasiya, əməkdaşlıq, inklüzivlik və mükəmməllik. Yüksək standartları qoruyarkən hər kəsin töhfə verməyə və öyrənməyə xoş gəldiyini hiss etməsini təmin etməyə sadiqik.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="features-container">
-                <h2 class="fade-in-up">Nə Təklif Edirik</h2>
-                <div class="features-grid">
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">💻</div>
-                        <h4>Texnoloji Müzakirələr</h4>
-                        <p>Ən son texnologiyalar, tendensiyalar və innovasiyalar haqqında mənalı söhbətlərdə iştirak edin.</p>
-                    </div>
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">🚀</div>
-                        <h4>Layihə Nümayişi</h4>
-                        <p>Layihələrinizi paylaşın, rəy alın və həmkar proqramçıların heyrətamiz işlərini kəşf edin.</p>
-                    </div>
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">📚</div>
-                        <h4>Öyrənmə Resursları</h4>
-                        <p>Bacarıqlarınızı artırmaq üçün seçilmiş dərsliklər, bələdçilər və təhsil məzmununa daxil olun.</p>
-                    </div>
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">🤝</div>
-                        <h4>İcma Dəstəyi</h4>
-                        <p>Təcrübəli proqramçılardan kömək alın və başqalarının böyüməsinə kömək etməyə töhfə verin.</p>
-                    </div>
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">🔧</div>
-                        <h4>Alətlər və Resurslar</h4>
-                        <p>Məhsuldarlığınızı artırmaq üçün faydalı alətlər, kitabxanalar və resurslar kəşf edin.</p>
-                    </div>
-                    <div class="feature-item fade-in-up">
-                        <div class="feature-icon">🌟</div>
-                        <h4>İnovasiya Mərkəzi</h4>
-                        <p>Qabaqcıl layihələrdə əməkdaşlıq edin və növbəti böyük irəliləyişin bir hissəsi olun.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#home">Ana Səhifə</a>
-                <a href="#about">Haqqımızda</a>
-                <a href="https://forum.texnosfer.net">Forum</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://instagram.com/texnosfernet" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="https://tiktok.com/@texnosfernet" target="_blank" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Texnosfer.net. Bütün hüquqlar qorunur.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-
-        class UserDatabase {
-            constructor() {
-                this.storageKey = 'texnosferUsers';
-                this.initializeDatabase();
-            }
-
-            initializeDatabase() {
-                if (!localStorage.getItem(this.storageKey)) {
-                    localStorage.setItem(this.storageKey, JSON.stringify([]));
-                }
-            }
-
-            getAllUsers() {
-                try {
-                    return JSON.parse(localStorage.getItem(this.storageKey)) || [];
-                } catch (e) {
-                    console.error('Error reading user database:', e);
-                    return [];
-                }
-            }
-
-            saveUsers(users) {
-                try {
-                    localStorage.setItem(this.storageKey, JSON.stringify(users));
-                    return true;
-                } catch (e) {
-                    console.error('Error saving user database:', e);
-                    return false;
-                }
-            }
-
-            createUser(userData) {
-                const users = this.getAllUsers();
-                const newUser = {
-                    id: Date.now() + Math.random(),
-                    username: userData.username,
-                    email: userData.email,
-                    password: userData.password, // In real app, this should be hashed
-                    createdAt: new Date().toISOString(),
-                    lastLogin: null,
-                    isActive: true
-                };
-                
-                users.push(newUser);
-                if (this.saveUsers(users)) {
-                    return newUser;
-                }
-                return null;
-            }
-
-            findUser(emailOrUsername, password = null) {
-                const users = this.getAllUsers();
-                return users.find(user => {
-                    const matchesIdentifier = user.email === emailOrUsername || user.username === emailOrUsername;
-                    if (password) {
-                        return matchesIdentifier && user.password === password;
-                    }
-                    return matchesIdentifier;
-                });
-            }
-
-            userExists(username, email) {
-                const users = this.getAllUsers();
-                return users.some(user => 
-                    user.username.toLowerCase() === username.toLowerCase() || 
-                    user.email.toLowerCase() === email.toLowerCase()
-                );
-            }
-
-            updateLastLogin(userId) {
-                const users = this.getAllUsers();
-                const userIndex = users.findIndex(user => user.id === userId);
-                if (userIndex !== -1) {
-                    users[userIndex].lastLogin = new Date().toISOString();
-                    this.saveUsers(users);
-                }
-            }
-
-            getUserCount() {
-                return this.getAllUsers().length;
-            }
-
-            deleteUser(userId) {
-                const users = this.getAllUsers();
-                const filteredUsers = users.filter(user => user.id !== userId);
-                return this.saveUsers(filteredUsers);
-            }
+      function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
         }
+      }
 
-        // Initialize database
-        const userDB = new UserDatabase();
-
-        // User session management
-        let currentUser = null;
-        let isLoading = false;
-
-        // Check for existing session on page load
-        window.addEventListener('load', () => {
-            const savedUser = localStorage.getItem('texnoIdUser');
-            if (savedUser) {
-                try {
-                    currentUser = JSON.parse(savedUser);
-                    updateUIForLoggedInUser();
-                } catch (e) {
-                    localStorage.removeItem('texnoIdUser');
-                }
-            }
-            document.body.style.opacity = '1';
-        });
-
-        // Modal functions
-        function openModal() {
-            if (currentUser) {
-                return; // User is already logged in
-            }
-            document.getElementById('loginModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            clearMessages();
-        }
-
-        function closeModal() {
-            document.getElementById('loginModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            clearMessages();
-            resetForms();
-        }
-
-        function resetForms() {
-            document.getElementById('authForm').reset();
-            const buttons = document.querySelectorAll('.login-btn');
-            buttons.forEach(btn => {
-                btn.disabled = false;
-                btn.classList.remove('loading');
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
             });
-        }
-
-        function switchTab(tab) {
-            if (isLoading) return;
-
-            const loginTab = document.querySelector('.auth-tab:first-child');
-            const signupTab = document.querySelector('.auth-tab:last-child');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const authFooter = document.getElementById('authFooter');
-
-            clearMessages();
-            resetForms();
-
-            if (tab === 'login') {
-                loginTab.classList.add('active');
-                signupTab.classList.remove('active');
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-                authFooter.innerHTML = 'Hesabınız yoxdur? <a href="#" onclick="switchTab(\'signup\')">Yaradın</a>';
-            } else {
-                signupTab.classList.add('active');
-                loginTab.classList.remove('active');
-                signupForm.style.display = 'block';
-                loginForm.style.display = 'none';
-                authFooter.innerHTML = 'Artıq hesabınız var? <a href="#" onclick="switchTab(\'login\')">Daxil olun</a>';
-            }
-        }
-
-        function showMessage(message, type = 'success') {
-            const messageContainer = document.getElementById('messageContainer');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
-            messageDiv.textContent = message;
-            messageContainer.innerHTML = '';
-            messageContainer.appendChild(messageDiv);
             
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                if (messageDiv.parentNode) {
-                    messageDiv.remove();
-                }
-            }, 5000);
-        }
-
-        function clearMessages() {
-            document.getElementById('messageContainer').innerHTML = '';
-        }
-
-        function updateUIForLoggedInUser() {
-            const texnoIdBtn = document.getElementById('texnoIdBtn');
-            const userMenu = document.getElementById('userMenu');
-            const userAvatar = document.getElementById('userAvatar');
-            const mobileTexnoBtn = document.getElementById('mobileTexnoBtn');
-            const mobileUserSection = document.getElementById('mobileUserSection');
-            const mobileUserAvatar = document.getElementById('mobileUserAvatar');
-            const mobileUsername = document.getElementById('mobileUsername');
-
-            // Desktop UI
-            if (texnoIdBtn) texnoIdBtn.style.display = 'none';
-            if (userMenu) userMenu.style.display = 'flex';
-            if (userAvatar) {
-                userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
-                userAvatar.title = `${currentUser.username} olaraq daxil olmuşsunuz`;
-            }
-
-            // Mobile UI
-            if (mobileTexnoBtn) mobileTexnoBtn.style.display = 'none';
-            if (mobileUserSection) mobileUserSection.style.display = 'block';
-            if (mobileUserAvatar) {
-                mobileUserAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
-            }
-            if (mobileUsername) {
-                mobileUsername.textContent = currentUser.username;
-            }
-        }
-
-        function updateUIForLoggedOutUser() {
-            const texnoIdBtn = document.getElementById('texnoIdBtn');
-            const userMenu = document.getElementById('userMenu');
-            const mobileTexnoBtn = document.getElementById('mobileTexnoBtn');
-            const mobileUserSection = document.getElementById('mobileUserSection');
-
-            // Desktop UI
-            if (texnoIdBtn) texnoIdBtn.style.display = 'block';
-            if (userMenu) userMenu.style.display = 'none';
-
-            // Mobile UI
-            if (mobileTexnoBtn) mobileTexnoBtn.style.display = 'block';
-            if (mobileUserSection) mobileUserSection.style.display = 'none';
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('texnoIdUser');
-            updateUIForLoggedOutUser();
-            showMessage('Uğurla çıxış etdiniz!', 'success');
-        }
-
-        function setLoading(isLoadingState, buttonId) {
-            isLoading = isLoadingState;
-            const button = document.getElementById(buttonId);
-            if (button) {
-                button.disabled = isLoadingState;
-                if (isLoadingState) {
-                    button.classList.add('loading');
-                    button.textContent = 'İşlənir...';
-                } else {
-                    button.classList.remove('loading');
-                    button.textContent = buttonId === 'loginBtn' ? 'Daxil Ol' : 'Hesab Yarat';
-                }
-            }
-        }
-
-        document.getElementById('authForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
             
-            if (isLoading) return;
-
-            const activeTab = document.querySelector('.auth-tab.active').textContent;
-            
-            if (activeTab === 'Daxil Ol') {
-                const emailOrUsername = document.getElementById('loginEmail').value.trim();
-                const password = document.getElementById('loginPassword').value;
-                
-                if (!emailOrUsername || !password) {
-                    showMessage('Bütün sahələri doldurun.', 'error');
-                    return;
-                }
-
-                setLoading(true, 'loginBtn');
-
-                setTimeout(() => {
-                    const user = userDB.findUser(emailOrUsername, password);
-                    
-                    if (user) {
-                        currentUser = { 
-                            id: user.id,
-                            username: user.username, 
-                            email: user.email 
-                        };
-                        localStorage.setItem('texnoIdUser', JSON.stringify(currentUser));
-                        userDB.updateLastLogin(user.id);
-                        showMessage(`Xoş gəlmisiniz, ${user.username}!`, 'success');
-                        
-                        setTimeout(() => {
-                            closeModal();
-                            updateUIForLoggedInUser();
-                        }, 1500);
-                    } else {
-                        showMessage('Yanlış məlumatlar. Əvvəlcə hesab yaradın.', 'error');
-                    }
-                    
-                    setLoading(false, 'loginBtn');
-                }, 1000);
-                
-            } else {
-                const username = document.getElementById('signupUsername').value.trim();
-                const email = document.getElementById('signupEmail').value.trim();
-                const password = document.getElementById('signupPassword').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                
-                if (!username || !email || !password || !confirmPassword) {
-                    showMessage('Bütün sahələri doldurun.', 'error');
-                    return;
-                }
-
-                if (username.length < 2) {
-                    showMessage('İstifadəçi adı ən azı 2 simvol olmalıdır.', 'error');
-                    return;
-                }
-
-                if (password.length < 4) {
-                    showMessage('Şifrə ən azı 4 simvol olmalıdır.', 'error');
-                    return;
-                }
-                
-                if (password !== confirmPassword) {
-                    showMessage('Şifrələr uyğun gəlmir!', 'error');
-                    return;
-                }
-
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    showMessage('Düzgün e-poçt ünvanı daxil edin.', 'error');
-                    return;
-                }
-
-                setLoading(true, 'signupBtn');
-                
-                setTimeout(() => {
-                    if (userDB.userExists(username, email)) {
-                        showMessage('İstifadəçi adı və ya e-poçt artıq mövcuddur.', 'error');
-                    } else {
-                        const newUser = userDB.createUser({ username, email, password });
-                        if (newUser) {
-                            currentUser = { 
-                                id: newUser.id,
-                                username: newUser.username, 
-                                email: newUser.email 
-                            };
-                            localStorage.setItem('texnoIdUser', JSON.stringify(currentUser));
-                            showMessage(`Texnosfer.net-ə xoş gəlmisiniz, ${username}! Texno ID-niz yaradıldı.`, 'success');
-                            
-                            setTimeout(() => {
-                                closeModal();
-                                updateUIForLoggedInUser();
-                            }, 2000);
-                        } else {
-                            showMessage('Hesab yaradılarkən xəta baş verdi.', 'error');
-                        }
-                    }
-                    
-                    setLoading(false, 'signupBtn');
-                }, 1000);
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              menuIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
             }
+          }
         });
+      });
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target === modal) {
-                closeModal();
-            }
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(10, 10, 10, 0.98)';
+        } else {
+          header.style.background = 'rgba(10, 10, 10, 0.95)';
         }
-
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileNav = document.getElementById('mobileNav');
-
-        if (mobileMenu) {
-            mobileMenu.addEventListener('click', function() {
-                this.classList.toggle('active');
-                mobileNav.classList.toggle('active');
-            });
-        }
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                mobileNav.classList.remove('active');
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(el);
-        });
-
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.98)';
-            } else {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-            }
-            
-            updateActiveNavLink();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('loginModal');
-            if (modal.style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            }
-        });
-
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.5s ease-in';
-
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && e.target.type !== 'submit') {
-                    e.preventDefault();
-                    const form = e.target.closest('form');
-                    if (form) {
-                        const submitBtn = form.querySelector('button[type="submit"]');
-                        if (submitBtn && !submitBtn.disabled) {
-                            submitBtn.click();
-                        }
-                    }
-                }
-            });
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mobileMenu.classList.remove('active');
-                mobileNav.classList.remove('active');
-            }
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
 
