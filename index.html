@@ -81,21 +81,23 @@
         scroll-behavior: smooth;
       }
       
-      ::-webkit-scrollbar {
-        width: 8px;
+      /* SCROLLBAR TAMAMILƏ SİLİNDİ */
+      html {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
       }
       
-      ::-webkit-scrollbar-track {
-        background: #0a0a0a;
+      html::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
       }
       
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #ef4444, #dc2626);
-        border-radius: 4px;
+      body {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
       
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
+      body::-webkit-scrollbar {
+        display: none;
       }
       
       .social-instagram:hover {
@@ -131,11 +133,9 @@
   </head>
   <body class="bg-darker scroll-smooth">
     <div id="root">
-
       <header class="bg-darker/95 backdrop-blur-md border-b border-dark sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center py-4">
-
             <div class="flex items-center">
               <a href="#home" class="block">
                 <img 
@@ -146,8 +146,8 @@
               </a>
             </div>
 
-
-            <nav class="hidden md:flex items-center space-x-8">
+            <!-- Desktop Navigation (lg and up) -->
+            <nav class="hidden lg:flex items-center space-x-8">
               <a href="#home" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
                 Ana Səhifə
                 <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
@@ -161,7 +161,6 @@
                 <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
               
-
               <div class="flex items-center space-x-4 ml-8 pl-8 border-l border-gray-700">
                 <a 
                   href="https://instagram.com/texnosfernet" 
@@ -188,8 +187,8 @@
               </div>
             </nav>
 
-
-            <div class="md:hidden">
+            <!-- Mobile menu button (mobile and tablet) -->
+            <div class="lg:hidden">
               <button
                 onclick="toggleMobileMenu()"
                 class="text-gray-400 hover:text-white transition-colors duration-200 p-2"
@@ -209,8 +208,8 @@
             </div>
           </div>
 
-
-          <div id="mobile-menu" class="hidden md:hidden">
+          <!-- Mobile Navigation (mobile and tablet) -->
+          <div id="mobile-menu" class="hidden lg:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 border-t border-dark">
               <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200">
                 Ana Səhifə
@@ -229,7 +228,7 @@
                   class="text-gray-400 transition-all duration-300 social-instagram"
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
                 <a 
@@ -249,9 +248,7 @@
       </header>
 
       <main>
-
         <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
-
           <div class="absolute inset-0 overflow-hidden">
             <div class="absolute -top-40 -right-40 w-80 h-80 bg-red-500/5 rounded-full blur-3xl floating-animation"></div>
             <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-red-500/5 rounded-full blur-3xl floating-animation" style="animation-delay: -3s;"></div>
@@ -259,194 +256,187 @@
           
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
             <div class="text-center">
-
-              <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
+              <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
                 Texnosfer.net
-                <span class="text-gradient block md:inline md:ml-6">⚡</span>
+                <span class="text-gradient block sm:block md:inline md:ml-6">⚡</span>
               </h1>
               
-
-              <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+              <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
                 Texnosfer.net — innovasiya və rəqəmsal dünyaya açılan qapın.
               </p>
 
-              <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-                <a href="#about" class="btn-primary text-white px-10 py-5 rounded-2xl font-semibold text-lg flex items-center group pulse-glow">
+              <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20 px-4">
+                <a href="#about" class="btn-primary text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold text-base sm:text-lg flex items-center group pulse-glow w-full sm:w-auto justify-center">
                   Kəşf etməyə başla
-                  <svg class="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="ml-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                   </svg>
                 </a>
-                <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-10 py-5 rounded-2xl font-semibold text-lg">
+                <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
                   Forum-a qoşul
                 </a>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="glass-effect rounded-2xl p-8 hover-lift group">
-                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
-                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto px-4">
+                <div class="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-7 w-7 sm:h-8 sm:w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                     </svg>
                   </div>
-                  <h3 class="text-2xl font-bold text-white mb-4">İnnovasiya</h3>
-                  <p class="text-gray-300 leading-relaxed">Ən son texnoloji yeniliklər və breakthrough həlləri ilə tanış olun.</p>
+                  <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">İnnovasiya</h3>
+                  <p class="text-gray-300 leading-relaxed text-sm sm:text-base">Ən son texnoloji yeniliklər və breakthrough həlləri ilə tanış olun.</p>
                 </div>
 
-                <div class="glass-effect rounded-2xl p-8 hover-lift group">
-                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
-                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-7 w-7 sm:h-8 sm:w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                       <circle cx="9" cy="7" r="4"/>
                       <path d="m22 21-3-3m0 0a5.5 5.5 0 1 0-7.78-7.78 5.5 5.5 0 0 0 7.78 7.78Z"/>
                     </svg>
                   </div>
-                  <h3 class="text-2xl font-bold text-white mb-4">İcma</h3>
-                  <p class="text-gray-300 leading-relaxed">Texnoloji həvəskarları və mütəxəssisləri ilə əlaqə qurun.</p>
+                  <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">İcma</h3>
+                  <p class="text-gray-300 leading-relaxed text-sm sm:text-base">Texnoloji həvəskarları və mütəxəssisləri ilə əlaqə qurun.</p>
                 </div>
 
-                <div class="glass-effect rounded-2xl p-8 hover-lift group">
-                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
-                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-effect rounded-2xl p-6 sm:p-8 hover-lift group">
+                  <div class="bg-red-500/20 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300 mx-auto">
+                    <svg class="h-7 w-7 sm:h-8 sm:w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                     </svg>
                   </div>
-                  <h3 class="text-2xl font-bold text-white mb-4">Müzakirə</h3>
-                  <p class="text-gray-300 leading-relaxed">Aktiv forumda fikirlər paylaşın və suallarınıza cavab tapın.</p>
+                  <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Müzakirə</h3>
+                  <p class="text-gray-300 leading-relaxed text-sm sm:text-base">Aktiv forumda fikirlər paylaşın və suallarınıza cavab tapın.</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-
-        <section id="about" class="bg-darker py-24 relative">
-
+        <section id="about" class="bg-darker py-16 sm:py-24 relative">
           <div class="absolute inset-0 overflow-hidden">
             <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-red-500/3 rounded-full blur-3xl"></div>
             <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-red-500/3 rounded-full blur-3xl"></div>
           </div>
           
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-            <div class="text-center mb-20">
-              <h2 class="text-4xl md:text-6xl font-black text-white mb-8">
+            <div class="text-center mb-16 sm:mb-20">
+              <h2 class="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 sm:mb-8">
                 Haqqımızda
               </h2>
-              <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+              <p class="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
                 Texnosfer, texnoloji sahədə Azərbaycanda aparıcı informasiya platformasıdır. 
                 Bizim missiyamız texnoloji bilikləri əlçatan etmək və innovasiyanı dəstəkləməkdir.
               </p>
             </div>
 
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-              <div class="glass-effect rounded-3xl p-10 hover-lift">
-                <div class="flex items-center mb-8">
-                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mr-6">
-                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-16 sm:mb-20">
+              <div class="glass-effect rounded-3xl p-8 sm:p-10 hover-lift">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center mb-6 sm:mb-8">
+                  <div class="bg-red-500/20 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-0 sm:mr-6">
+                    <svg class="h-7 w-7 sm:h-8 sm:w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="10"/>
                       <circle cx="12" cy="12" r="6"/>
                       <circle cx="12" cy="12" r="2"/>
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-bold text-white">Missiyamız</h3>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">Missiyamız</h3>
                 </div>
-                <p class="text-gray-300 text-lg leading-relaxed">
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
                   Texnoloji bilikləri və innovasiyaları Azərbaycan ictimaiyyətinə çatdırmaq, 
                   rəqəmsal savadlılığı artırmaq və gənc texnoloji həvəskarları dəstəkləmək.
                 </p>
               </div>
 
-              <div class="glass-effect rounded-3xl p-10 hover-lift">
-                <div class="flex items-center mb-8">
-                  <div class="bg-red-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mr-6">
-                    <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="glass-effect rounded-3xl p-8 sm:p-10 hover-lift">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center mb-6 sm:mb-8">
+                  <div class="bg-red-500/20 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-0 sm:mr-6">
+                    <svg class="h-7 w-7 sm:h-8 sm:w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                       <circle cx="12" cy="12" r="3"/>
                     </svg>
                   </div>
-                  <h3 class="text-3xl font-bold text-white">Vizyonumuz</h3>
+                  <h3 class="text-2xl sm:text-3xl font-bold text-white">Vizyonumuz</h3>
                 </div>
-                <p class="text-gray-300 text-lg leading-relaxed">
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
                   Azərbaycanda texnoloji sahənin inkişafına töhfə vermək, dəstək olmaq.
                 </p>
               </div>
             </div>
 
-            <div class="mb-20">
-              <h3 class="text-4xl font-bold text-white text-center mb-16">Nə təklif edirik?</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="mb-16 sm:mb-20">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white text-center mb-12 sm:mb-16">Nə təklif edirik?</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="text-center group">
-                  <div class="glass-effect rounded-3xl p-8 hover-lift">
-                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
-                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="glass-effect rounded-3xl p-6 sm:p-8 hover-lift">
+                    <div class="bg-red-500/20 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-8 w-8 sm:h-10 sm:w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
                         <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
                         <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
                       </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Texnoloji Xəbərlər</h4>
-                    <p class="text-gray-400 leading-relaxed">Ən son texnoloji yeniliklər və trendlər haqqında məlumatlar</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Texnoloji Xəbərlər</h4>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Ən son texnoloji yeniliklər və trendlər haqqında məlumatlar</p>
                   </div>
                 </div>
 
                 <div class="text-center group">
-                  <div class="glass-effect rounded-3xl p-8 hover-lift">
-                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
-                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="glass-effect rounded-3xl p-6 sm:p-8 hover-lift">
+                    <div class="bg-red-500/20 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-8 w-8 sm:h-10 sm:w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
                         <path d="M3 6h18"/>
                         <path d="M16 10a4 4 0 0 1-8 0"/>
                       </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Təlim Materialları</h4>
-                    <p class="text-gray-400 leading-relaxed">Keyfiyyətli təlim məzmunu və praktiki dərslər</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Təlim Materialları</h4>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Keyfiyyətli təlim məzmunu və praktiki dərslər</p>
                   </div>
                 </div>
 
                 <div class="text-center group">
-                  <div class="glass-effect rounded-3xl p-8 hover-lift">
-                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
-                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="glass-effect rounded-3xl p-6 sm:p-8 hover-lift">
+                    <div class="bg-red-500/20 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-8 w-8 sm:h-10 sm:w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"/>
                         <circle cx="12" cy="12" r="6"/>
                         <circle cx="12" cy="12" r="2"/>
                       </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">İcma Dəstəyi</h4>
-                    <p class="text-gray-400 leading-relaxed">Aktiv icma və münasib şəraitdə bilik paylaşımı</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">İcma Dəstəyi</h4>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Aktiv icma və münasib şəraitdə bilik paylaşımı</p>
                   </div>
                 </div>
 
                 <div class="text-center group">
-                  <div class="glass-effect rounded-3xl p-8 hover-lift">
-                    <div class="bg-red-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-500/30 transition-all duration-300">
-                      <svg class="h-10 w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="glass-effect rounded-3xl p-6 sm:p-8 hover-lift">
+                    <div class="bg-red-500/20 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-red-500/30 transition-all duration-300">
+                      <svg class="h-8 w-8 sm:h-10 sm:w-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                         <circle cx="12" cy="12" r="3"/>
                       </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Karyera Dəstəyi</h4>
-                    <p class="text-gray-400 leading-relaxed">Texnoloji sahədə karyera qurmaq üçün məsləhətlər</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Karyera Dəstəyi</h4>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Texnoloji sahədə karyera qurmaq üçün məsləhətlər</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Call to Action -->
             <div class="text-center">
-              <div class="glass-effect rounded-3xl p-12 max-w-4xl mx-auto">
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Bizə qoşulun!</h3>
-                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+              <div class="glass-effect rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">Bizə qoşulun!</h3>
+                <p class="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed">
                   Texnoloji gələcəyi birlikdə qurmaq üçün icmamızın bir hissəsi olun.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
                     Forum-a qoşul
                   </a>
-                  <a href="https://instagram.com/texnosfernet" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                  <a href="https://instagram.com/texnosfernet" target="_blank" rel="noopener noreferrer" class="btn-secondary glass-effect text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg w-full sm:w-auto text-center">
                     Instagram-da izlə
                   </a>
                 </div>
@@ -458,18 +448,17 @@
 
       <footer class="bg-darker border-t border-dark relative">
         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
             <div class="col-span-1 md:col-span-2">
               <a href="#home" class="block">
                 <img 
                   src="https://i.ibb.co/Txpbp5xP/Picsart-25-04-06-12-14-50-827.png" 
                   alt="Texnosfer Logo" 
-                  class="h-14 w-auto mb-6 transition-opacity duration-300 hover:opacity-90"
+                  class="h-12 sm:h-14 w-auto mb-4 sm:mb-6 transition-opacity duration-300 hover:opacity-90"
                 />
               </a>
-              <p class="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+              <p class="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8 max-w-md leading-relaxed">
                 Texnoloji dünyasının mərkəzi. İnnovasiya, bilik və icma bir yerdə.
               </p>
               <div class="flex space-x-4">
@@ -477,9 +466,9 @@
                   href="https://instagram.com/texnosfernet" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="glass-effect text-gray-400 p-4 rounded-2xl transition-all duration-300 social-instagram"
+                  class="glass-effect text-gray-400 p-3 sm:p-4 rounded-2xl transition-all duration-300 social-instagram"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="20" height="20" sm:width="24" sm:height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
@@ -487,9 +476,9 @@
                   href="https://tiktok.com/@texnosfernet" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="glass-effect text-gray-400 p-4 rounded-2xl transition-all duration-300 social-tiktok"
+                  class="glass-effect text-gray-400 p-3 sm:p-4 rounded-2xl transition-all duration-300 social-tiktok"
                 >
-                  <svg width="22" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="18" height="20" sm:width="22" sm:height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                   </svg>
                 </a>
@@ -497,25 +486,25 @@
             </div>
 
             <div>
-              <h3 class="text-white font-bold text-xl mb-6">Sürətli Keçidlər</h3>
-              <ul class="space-y-4">
+              <h3 class="text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6">Sürətli Keçidlər</h3>
+              <ul class="space-y-3 sm:space-y-4">
                 <li>
-                  <a href="#home" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                  <a href="#home" class="text-gray-400 hover:text-white transition-all duration-300 text-base sm:text-lg hover:translate-x-2 inline-block">
                     Ana Səhifə
                   </a>
                 </li>
                 <li>
-                  <a href="#about" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                  <a href="#about" class="text-gray-400 hover:text-white transition-all duration-300 text-base sm:text-lg hover:translate-x-2 inline-block">
                     Haqqımızda
                   </a>
                 </li>
                 <li>
-                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                  <a href="https://forum.texnosfer.net" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 text-base sm:text-lg hover:translate-x-2 inline-block">
                     Forum
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@texnosfer.net" class="text-gray-400 hover:text-white transition-all duration-300 text-lg hover:translate-x-2 inline-block">
+                  <a href="mailto:info@texnosfer.net" class="text-gray-400 hover:text-white transition-all duration-300 text-base sm:text-lg hover:translate-x-2 inline-block">
                     Əlaqə
                   </a>
                 </li>
@@ -523,9 +512,8 @@
             </div>
           </div>
 
-
-          <div class="border-t border-dark mt-16 pt-8 text-center">
-            <p class="text-gray-400 text-lg">
+          <div class="border-t border-dark mt-12 sm:mt-16 pt-6 sm:pt-8 text-center">
+            <p class="text-gray-400 text-base sm:text-lg">
               © 2025 Texnosfer.net. Bütün hüquqlar qorunur.
             </p>
           </div>
@@ -584,4 +572,3 @@
     </script>
   </body>
 </html>
-
